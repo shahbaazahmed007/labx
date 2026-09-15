@@ -147,6 +147,7 @@ export const LeaderboardPage = () => {
               <div className="domain-select-wrap">
                 <Filter size={14} />
                 <select
+                  aria-label="Filter leaderboard by domain"
                   value={selectedDomainId}
                   onChange={(e) => {
                     soundManager.playHover();
@@ -168,6 +169,8 @@ export const LeaderboardPage = () => {
               <Search size={16} color="#94a3b8" />
               <input
                 type="text"
+                aria-label="Search founders"
+                enterKeyHint="search"
                 placeholder="Search founder..."
                 value={search}
                 onChange={(e) => {
@@ -313,7 +316,7 @@ export const LeaderboardPage = () => {
                     <span style={{ fontSize: '0.72rem', fontWeight: 850, letterSpacing: '0.12em', color: '#22d3ee', textTransform: 'uppercase' }}>
                       CONTINUED STANDINGS
                     </span>
-                    <h2 style={{ fontSize: '1.4rem', fontWeight: 850, color: '#ffffff', marginTop: 3 }}>
+                    <h2 className="rankings-title">
                       Ranks #4 and Beyond
                     </h2>
                   </div>
@@ -385,9 +388,9 @@ export const LeaderboardPage = () => {
                         </div>
 
                         {/* BADGES */}
-                        <div className="ranking-badges">
+                        <div className="ranking-badges" aria-label={`${founder.badges_count || 0} badges`}>
                           <Award size={15} color="#c084fc" />
-                          <span>{founder.badges_count || 0}</span>
+                          <span>{founder.badges_count || 0}<span className="ranking-badge-label"> badges</span></span>
                         </div>
 
                         {/* POINTS */}
@@ -424,7 +427,9 @@ const PodiumCard = ({
   if (!founder) return null;
 
   return (
-    <div
+    <button
+      type="button"
+      aria-label={`Rank ${rank}: ${founder.full_name}. View founder profile`}
       className={`podium-card ${getRankClass(rank)}`}
       onClick={() => {
         soundManager.playWarpLaunch();
@@ -479,6 +484,6 @@ const PodiumCard = ({
         <span>View Founder</span>
         <ExternalLink size={13} />
       </div>
-    </div>
+    </button>
   );
 };

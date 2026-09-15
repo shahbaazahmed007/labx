@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { api } from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -68,6 +68,8 @@ export const RoadmapPage = () => {
   const [error, setError] = useState('');
   const [showStageUnlock, setShowStageUnlock] = useState(false);
   const [selectedStageIndex, setSelectedStageIndex] = useState(null);
+  const stageNavigation = useRef(null);
+  const currentMission = useRef(null);
 
   const navigate = useNavigate();
 
@@ -206,6 +208,13 @@ export const RoadmapPage = () => {
     [activeStage]
   );
   const currentMilestoneId = roadmapData?.current_location?.current_milestone_id;
+  useEffect(() => {
+    const navigation = stageNavigation.current;
+    const selected = navigation?.querySelector('[aria-pressed="true"]');
+    if (selected && navigation.scrollWidth > navigation.clientWidth) {
+      navigation.scrollLeft += selected.getBoundingClientRect().left - navigation.getBoundingClientRect().left - 8;
+    }
+  }, [activeStageIndex, processedStages.length]);
   const currentMilestoneIndex = visibleMilestoneNodes.findIndex(
     (milestone) => milestone.id === currentMilestoneId
   );
@@ -391,7 +400,7 @@ export const RoadmapPage = () => {
         </div>
       </header>
 
-      <nav className="roadmap-stage-selector" aria-label="Roadmap stages">
+      <nav ref={stageNavigation} className="roadmap-stage-selector" aria-label="Roadmap stages">
         {processedStages.map((stage, index) => {
           const isCurrent = stage.id === roadmapData?.current_location?.current_stage_id;
           const isSelected = index === activeStageIndex;
@@ -401,6 +410,7 @@ export const RoadmapPage = () => {
               type="button"
               className={`roadmap-stage-selector__item ${stage.is_unlocked ? 'is-unlocked' : 'is-locked'} ${stage.placementCompleted ? 'is-completed' : ''} ${isSelected ? 'is-selected' : ''}`}
               onClick={() => setSelectedStageIndex(index)}
+              aria-pressed={isSelected}
               aria-label={`${stage.name}, Stage ${index + 1}${stage.is_unlocked ? '' : ', locked preview'}`}
             >
               <TierRankBadge stageIndex={index} subRank={1} size={34} label={stage.tier.tierName} state={stage.is_unlocked ? 'active' : 'locked'} />
@@ -411,6 +421,19 @@ export const RoadmapPage = () => {
           );
         })}
       </nav>
+
+      <div className="roadmap-mobile-summary">
+        <div>
+          <span>YOUR JOURNEY</span>
+          <strong>Stage {activeStageIndex + 1} of {processedStages.length}</strong>
+        </div>
+        {!isPreviewingLockedStage && currentMilestoneIndex >= 0 && (
+          <button type="button" onClick={() => currentMission.current?.scrollIntoView({
+            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+            block: 'center',
+          })}>Current mission <ArrowRight size={14} /></button>
+        )}
+      </div>
 
       {/* =========================================================
           BALANCED GAME BOARD (1400px Span, Even Left / Right Split)
@@ -519,7 +542,10 @@ export const RoadmapPage = () => {
 
                   // Compact Holo-Shard Card
                   const HoloCardElement = (
-                    <div
+                    <button
+                      type="button"
+                      disabled={!isAccessible}
+                      aria-label={`${milestone.name}, ${state}${isAccessible ? '. Open milestone' : ''}`}
                       className={`board-holo-card state-${state}`}
                       onClick={() => handleMilestoneClick(milestone)}
                       onMouseEnter={isAccessible ? soundManager.playHover : undefined}
@@ -570,7 +596,7 @@ export const RoadmapPage = () => {
                           {state === 'locked' && <span>LOCKED 🔒</span>}
                         </div>
                       </div>
-                    </div>
+                    </button>
                   );
 
                   // Node Anchor Element
@@ -603,7 +629,8 @@ export const RoadmapPage = () => {
                   return (
                     <div
                       key={milestone.id}
-                      className={`board-milestone-row ${isLeft ? 'align-left' : 'align-right'}`}
+                      ref={milestone.id === currentMilestoneId ? currentMission : undefined}
+                      className={`board-milestone-row state-${state} ${isLeft ? 'align-left' : 'align-right'}`}
                     >
                       {/* On Left Row: [ Node ] -> [ Laser ] -> [ Card ] */}
                       {isLeft && (

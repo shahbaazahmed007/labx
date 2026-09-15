@@ -20,6 +20,7 @@ import {
 import { soundManager } from '../auth/gamified/soundEffects';
 import labxLogo from '../../assets/labx-logo.png';
 import './labxshell.css';
+import { MobileNavigation } from './MobileNavigation';
 
 export const Sidebar = () => {
   const { user, isFounder, isAdmin, logout } = useAuth();
@@ -37,6 +38,7 @@ export const Sidebar = () => {
   const deckName = isAdmin ? 'ADMIN COMMAND' : 'FOUNDER COMMAND';
 
   return (
+    <>
     <aside className="labx-sidebar">
 
       {/* Brand */}
@@ -150,10 +152,6 @@ export const Sidebar = () => {
           </>
         )}
 
-        <button type="button" className="labx-nav-item labx-mobile-logout" onClick={handleLogout}>
-          <span className="labx-nav-icon"><LogOut size={18} /></span>
-          <span className="labx-nav-label">Logout</span>
-        </button>
       </nav>
 
       {/* User Profile Footer */}
@@ -207,6 +205,8 @@ export const Sidebar = () => {
 
       </div>
     </aside>
+    <MobileNavigation />
+    </>
   );
 };
 

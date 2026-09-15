@@ -213,9 +213,9 @@
   to { opacity: 0.55; }
 }
 
-@media (max-width: 768px) {
-  .founder-world__backdrop,
-  .founder-world__backdrop::after {
+@media (max-width: 900px) {
+  .founder-world .founder-world__backdrop,
+  .founder-world .founder-world__backdrop::after {
     left: 0;
   }
 }

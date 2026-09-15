@@ -94,3 +94,12 @@
 @media (prefers-reduced-motion: reduce) {
   .floating-xp, .floating-xp__projector, .floating-xp .floating-xp__readout { transition: none; }
 }
+
+/* A tap opens a readout below the coin without moving the mobile header. */
+@media (max-width: 900px) {
+  .floating-xp, .floating-xp--open { width: 44px; height: 44px; transition: none; }
+  .floating-xp__projector { transform: scale(.8); transform-origin: left center; }
+  .floating-xp--open .floating-xp__projector { transform: scale(.8); }
+  .floating-xp .floating-xp__readout { left: auto; right: 0; top: calc(100% + 8px); max-width: 80vw; transform: translateY(-4px); transform-origin: top right; }
+  .floating-xp--open .floating-xp__readout { transform: translateY(0); transition-delay: 0s; }
+}
