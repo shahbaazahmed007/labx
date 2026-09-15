@@ -409,10 +409,10 @@ export const DashboardPage = () => {
             <GoldCoins />
             <div style={{ textAlign: "right" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 3, fontSize: "0.75rem", fontWeight: 800, color: "#94a3b8", textTransform: "uppercase" }}>
-                LABX POINTS <ChevronRight size={11} />
+                LABX COINS <ChevronRight size={11} />
               </div>
               <div style={{ fontSize: "1.42rem", fontWeight: 900, color: "#fff", lineHeight: 1.1 }}>{pts.toLocaleString()}</div>
-              <div style={{ fontSize: "0.75rem", color: "#64748b" }}>Founder Points</div>
+              <div style={{ fontSize: "0.75rem", color: "#64748b" }}>Founder Coins</div>
             </div>
           </div>
           <div className="stat-card" onClick={() => navigate("/roadmap")} style={{

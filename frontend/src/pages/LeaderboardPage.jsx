@@ -217,7 +217,7 @@ export const LeaderboardPage = () => {
             <div className="your-standing-right">
               <div className="your-points-block">
                 <strong className="points-number">{(userStanding.total_points || 0).toLocaleString()}</strong>
-                <span className="points-label">LABX POINTS</span>
+                <span className="points-label">LABX COINS</span>
               </div>
 
               <button
@@ -330,7 +330,7 @@ export const LeaderboardPage = () => {
                     <span>DOMAIN</span>
                     <span>PROGRESS</span>
                     <span>BADGES</span>
-                    <span>LABX POINTS</span>
+                    <span>LABX COINS</span>
                     <span />
                   </div>
 
@@ -464,7 +464,7 @@ const PodiumCard = ({
       <div className="podium-score">
         <div>
           <strong>{(founder.total_points || 0).toLocaleString()}</strong>
-          <span>LABX POINTS</span>
+          <span>LABX COINS</span>
         </div>
 
         <div className="score-divider" />

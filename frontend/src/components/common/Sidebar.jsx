@@ -35,7 +35,6 @@ export const Sidebar = () => {
   
   const initials = (displayName.charAt(0) || user?.email?.charAt(0) || 'F').toUpperCase();
   const deckName = isAdmin ? 'ADMIN COMMAND' : 'FOUNDER COMMAND';
-  const moduleCount = isAdmin ? 6 : 8;
 
   return (
     <aside className="labx-sidebar">
@@ -50,7 +49,6 @@ export const Sidebar = () => {
           <span aria-hidden="true" />
           {deckName}
         </div>
-        <div className="labx-deck-status__count">{moduleCount} MODULES</div>
       </div>
 
       {/* Navigation */}
@@ -152,6 +150,10 @@ export const Sidebar = () => {
           </>
         )}
 
+        <button type="button" className="labx-nav-item labx-mobile-logout" onClick={handleLogout}>
+          <span className="labx-nav-icon"><LogOut size={18} /></span>
+          <span className="labx-nav-label">Logout</span>
+        </button>
       </nav>
 
       {/* User Profile Footer */}

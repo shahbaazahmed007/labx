@@ -855,6 +855,34 @@
 }
 
 /* Responsive adjustments */
+@media (max-width: 600px) {
+  .gamified-auth-container {
+    min-height: 100svh;
+    justify-content: flex-start;
+    padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+  }
+  .auth-top-hud { flex-wrap: wrap; gap: 8px; margin-bottom: 12px; padding: 0; }
+  .hud-sound-toggle, .mode-tab-btn { min-height: 44px; }
+  .gamified-card-shell .showcase-panel { padding: 20px 18px; flex: none; }
+  /* The decorative reactor has an inline display style. */
+  .showcase-panel .hologram-reactor-wrapper { display: none !important; }
+  .showcase-panel .brand-logo-wrap { margin-bottom: 0; }
+  .showcase-panel .showcase-bottom-pill,
+  .showcase-panel .showcase-subhead,
+  .showcase-panel .showcase-desc,
+  .showcase-panel .showcase-title { display: none; }
+  .gamified-card-shell .form-panel { padding: 24px 18px; min-width: 0; }
+  .form-title { font-size: 1.5rem; }
+  .gamified-input { font-size: 16px; min-height: 48px; }
+  .input-action-icon { min-width: 44px; min-height: 44px; display: grid; place-items: center; }
+  .gamified-input-wrap input { padding-right: 54px; }
+  .security-matrix .matrix-label { flex-wrap: wrap; gap: 4px; }
+  .login-options-row { flex-wrap: wrap; gap: 12px; }
+  .auth-error-banner { overflow-wrap: anywhere; }
+  .auth-error-banner svg { flex-shrink: 0; }
+  .btn-warp-create { min-height: 48px; white-space: normal; }
+}
+
 @media (max-width: 900px) {
   .gamified-card-shell {
     flex-direction: column;

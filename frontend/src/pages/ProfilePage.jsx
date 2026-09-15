@@ -340,7 +340,7 @@ export const ProfilePage = () => {
         </div>
 
         {/* Stats Row Tiles */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '16px', marginTop: '28px', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '20px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))', gap: '16px', marginTop: '28px', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '20px' }}>
           <div className="glass-card" style={{ padding: '14px', textAlign: 'center', background: 'rgba(255,255,255,0.02)' }}>
             <div style={{ fontSize: '1.5rem', fontWeight: '900', color: '#22d3ee' }}>{profile?.stats?.posts || userPosts.length || 0}</div>
             <div style={{ fontSize: '0.74rem', color: '#94a3b8', fontWeight: '800', marginTop: '4px', textTransform: 'uppercase' }}>Transmissions</div>
@@ -366,7 +366,7 @@ export const ProfilePage = () => {
 
           <div className="glass-card" style={{ padding: '14px', textAlign: 'center', background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.3)' }}>
             <div style={{ fontSize: '1.5rem', fontWeight: '900', color: '#f59e0b' }}>{(profile?.total_points || user?.total_points || 0).toLocaleString()}</div>
-            <div style={{ fontSize: '0.74rem', color: '#f59e0b', fontWeight: '850', marginTop: '4px', textTransform: 'uppercase' }}>LabX Points</div>
+            <div style={{ fontSize: '0.74rem', color: '#f59e0b', fontWeight: '850', marginTop: '4px', textTransform: 'uppercase' }}>LabX Coins</div>
           </div>
         </div>
       </div>
@@ -418,7 +418,7 @@ export const ProfilePage = () => {
       )}
 
       {/* Progression & Transmissions */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: '24px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           {/* Progression System Tile */}
           <div className="glass-card" style={{ padding: '24px', borderRadius: '18px' }}>
@@ -452,7 +452,7 @@ export const ProfilePage = () => {
             </div>
 
             {profile?.badges && profile.badges.length > 0 ? (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', gap: '12px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(120px, 100%), 1fr))', gap: '12px' }}>
                 {profile.badges.map((badge) => (
                   <div
                     key={badge.id}

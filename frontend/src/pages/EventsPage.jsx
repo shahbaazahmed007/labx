@@ -131,7 +131,7 @@ export const EventsPage = () => {
           <p style={{ fontSize: '0.88rem' }}>Check back soon for upcoming masterclasses and ecosystem events.</p>
         </div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '22px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(340px, 100%), 1fr))', gap: '22px' }}>
           {announcements.map((item) => (
             <div
               key={item.id}

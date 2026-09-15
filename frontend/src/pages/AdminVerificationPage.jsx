@@ -97,7 +97,7 @@ export const AdminVerificationPage = () => {
                   <div style={{ display: 'flex', gap: '8px', marginBottom: '6px' }}>
                     <span className="badge badge-cyan">{founder.domains?.name || 'Domain'}</span>
                     <span className="badge badge-primary">{quest.quest_type?.toUpperCase()}</span>
-                    <span className="badge badge-amber">+{quest.points} Points</span>
+                    <span className="badge badge-amber">+{quest.points} Coins</span>
                   </div>
 
                   <h4 style={{ fontSize: '1.1rem', fontWeight: '800', color: '#fff', marginBottom: '4px' }}>
@@ -137,7 +137,7 @@ export const AdminVerificationPage = () => {
             <div style={{ padding: '16px', backgroundColor: 'rgba(255,255,255,0.03)', borderRadius: '8px', marginBottom: '20px', fontSize: '0.9rem' }}>
               <div><strong>Founder:</strong> {selectedSub.profiles?.full_name} ({selectedSub.profiles?.email})</div>
               <div><strong>Domain:</strong> {selectedSub.profiles?.domains?.name}</div>
-              <div><strong>Points Award:</strong> +{selectedSub.quests?.points} Points</div>
+              <div><strong>Coins Award:</strong> +{selectedSub.quests?.points} Coins</div>
             </div>
 
             {/* Submission Content */}

@@ -79,7 +79,7 @@ export const AchievementsPage = () => {
           <div className="spinner" style={{ width: 34, height: 34, margin: '0 auto 12px' }} />
         </div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '22px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(280px, 100%), 1fr))', gap: '22px' }}>
           {achievements.map((ach) => {
             const isEarned = ach.is_earned;
 

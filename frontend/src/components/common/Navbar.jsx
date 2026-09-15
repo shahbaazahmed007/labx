@@ -36,7 +36,7 @@ export const Navbar = ({ title }) => {
       {/* ACTIONS */}
       <div className="labx-navbar-actions">
 
-        {/* LABX XP */}
+        {/* LABX COINS */}
         {isFounder && (
           <FloatingXp points={user?.total_points || 0} />
         )}

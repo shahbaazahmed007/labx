@@ -343,7 +343,7 @@ export const AdminQuestsPage = () => {
                     </select>
                   </div>
                   <div className="form-group" style={{ margin: 0 }}>
-                    <label className="form-label">LABX Points</label>
+                    <label className="form-label">LABX Coins</label>
                     <input type="number" className="form-input" value={points} onChange={(e) => setPoints(e.target.value)} required />
                   </div>
                 </div>

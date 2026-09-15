@@ -7,15 +7,15 @@ export const FloatingXp = ({ points = 0 }) => {
   const [focused, setFocused] = useState(false);
   const value = points.toLocaleString();
   const [decoded, setDecoded] = useState(value);
-  const [decodedLabel, setDecodedLabel] = useState('LabX XP');
-  const [decodedUnit, setDecodedUnit] = useState('XP');
+  const [decodedLabel, setDecodedLabel] = useState('LabX Coins');
+  const [decodedUnit, setDecodedUnit] = useState('Coins');
   const visible = open || hovered || focused;
 
   useEffect(() => {
     if (!visible || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setDecoded(value);
-      setDecodedLabel('LabX XP');
-      setDecodedUnit('XP');
+      setDecodedLabel('LabX Coins');
+      setDecodedUnit('Coins');
       return;
     }
     const symbols = '0123456789ABCDEF#%';
@@ -27,8 +27,8 @@ export const FloatingXp = ({ points = 0 }) => {
           ? char : symbols[Math.floor(Math.random() * symbols.length)]
       ).join('');
       setDecoded(decode(value));
-      setDecodedLabel(decode('LabX XP'));
-      setDecodedUnit(decode('XP'));
+      setDecodedLabel(decode('LabX Coins'));
+      setDecodedUnit(decode('Coins'));
       return progress === 1;
     };
     scramble();
@@ -40,8 +40,8 @@ export const FloatingXp = ({ points = 0 }) => {
 
   return (
   <button type="button" className={`floating-xp ${visible ? 'floating-xp--open' : ''}`}
-    style={{ '--xp-readout-width': `${Math.max(112, value.length * 15 + 54)}px` }}
-    aria-label={`${points.toLocaleString()} XP`}
+    style={{ '--xp-readout-width': `${Math.max(130, value.length * 15 + 64)}px` }}
+    aria-label={`${points.toLocaleString()} LabX Coins`}
     onPointerEnter={event => { if (event.pointerType !== 'touch') setHovered(true); }}
     onPointerLeave={() => setHovered(false)}
     onFocus={event => setFocused(event.currentTarget.matches(':focus-visible'))}

@@ -76,7 +76,7 @@ export const AdminFoundersPage = () => {
                 <th style={{ padding: '16px' }}>Email</th>
                 <th style={{ padding: '16px' }}>Domain</th>
                 <th style={{ padding: '16px' }}>Guild</th>
-                <th style={{ padding: '16px' }}>Points</th>
+                <th style={{ padding: '16px' }}>LabX Coins</th>
                 <th style={{ padding: '16px' }}>Assessment</th>
                 <th style={{ padding: '16px', textAlign: 'right' }}>Actions</th>
               </tr>

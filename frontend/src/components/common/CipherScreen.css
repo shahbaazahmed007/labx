@@ -1,23 +1,65 @@
-.cipher-screen { display: contents; }
-.screen-decoding { position: relative; }
-.screen-decoding::after {
-  content: attr(data-cipher);
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  padding: inherit;
-  border-radius: inherit;
-  background: #0b1220;
-  color: #a5f3fc;
-  font-family: 'Consolas', monospace;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-  overflow: hidden;
-  overflow-wrap: anywhere;
-  pointer-events: none;
-  text-shadow: 0 0 8px #22d3ee33;
+.cipher-screen-container {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
 }
-button.screen-decoding::after { justify-content: center; }
-@media (prefers-reduced-motion: reduce) { .screen-decoding::after { display: none; } }
+
+/* Futuristic laser scanline that sweeps smoothly down the viewport on page reveal */
+.cipher-laser-sweep {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(99, 102, 241, 0.35) 15%,
+    #22d3ee 50%,
+    rgba(99, 102, 241, 0.35) 85%,
+    transparent 100%
+  );
+  box-shadow: 
+    0 0 10px rgba(34, 211, 238, 0.75),
+    0 0 22px rgba(99, 102, 241, 0.35);
+  pointer-events: none;
+  z-index: 9999;
+  animation: cipher-laser-glide 0.95s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes cipher-laser-glide {
+  0% {
+    top: 0%;
+    opacity: 0;
+    transform: scaleX(0.25);
+  }
+  15% {
+    opacity: 0.85;
+    transform: scaleX(1);
+  }
+  80% {
+    opacity: 0.65;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+    transform: scaleX(0.9);
+  }
+}
+
+/* Crisp text decode effect with neon cyber glow */
+.cipher-active {
+  color: #a5f3fc !important;
+  text-shadow: 0 0 10px rgba(34, 211, 238, 0.45) !important;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+  font-feature-settings: 'tnum';
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cipher-laser-sweep {
+    display: none !important;
+  }
+  .cipher-active {
+    text-shadow: none !important;
+  }
+}

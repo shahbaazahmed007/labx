@@ -79,6 +79,7 @@
 .floating-xp .floating-xp__amount > span { color: #a5f3fc; font-size: 10px; }
 @media (prefers-reduced-motion: reduce) { .floating-xp .floating-xp__readout { transition: none; } }
 /* Expand inward in the top bar, revealing the readout beside the coin. */
+.floating-xp:not(.floating-xp--open) .floating-xp__readout { display: none; }
 .floating-xp { width: 54px; height: 56px; gap: 0; justify-content: flex-start; transition: width .6s cubic-bezier(.22,1,.36,1); }
 .floating-xp--open { width: calc(54px + var(--xp-readout-width)); }
 .floating-xp__projector { transition: transform .6s cubic-bezier(.22,1,.36,1); }

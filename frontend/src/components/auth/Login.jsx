@@ -211,13 +211,16 @@ export const Login = () => {
                   onFocus={soundManager.playFocus}
                   placeholder="••••••••"
                 />
-                <div
+                <button
+                  type="button"
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  aria-pressed={showPassword}
                   className="input-action-icon"
                   onClick={() => setShowPassword(!showPassword)}
                   title={showPassword ? 'Hide password' : 'Show password'}
                 >
                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
-                </div>
+                </button>
               </div>
             </div>
 

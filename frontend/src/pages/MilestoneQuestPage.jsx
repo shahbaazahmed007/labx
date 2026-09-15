@@ -162,7 +162,7 @@ export const MilestoneQuestPage = () => {
             No core quests configured for this milestone yet.
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '20px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(320px, 100%), 1fr))', gap: '20px' }}>
             {core_quests?.map((quest) => (
               <QuestCard key={quest.id} quest={quest} onClick={() => handleOpenQuestModal(quest)} />
             ))}
@@ -177,7 +177,7 @@ export const MilestoneQuestPage = () => {
             OPTIONAL SIDE MISSIONS
           </h3>
           <span className="badge badge-cyan" style={{ fontSize: '0.7rem', fontWeight: 850 }}>
-            Bonus XP Rewards
+            Bonus LabX Coins
           </span>
         </div>
 
@@ -186,7 +186,7 @@ export const MilestoneQuestPage = () => {
             No side quests currently assigned to this sector.
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '20px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(320px, 100%), 1fr))', gap: '20px' }}>
             {side_quests?.map((quest) => (
               <QuestCard key={quest.id} quest={quest} onClick={() => handleOpenQuestModal(quest)} />
             ))}
@@ -242,7 +242,7 @@ export const MilestoneQuestPage = () => {
                 {selectedQuest.quest_type.toUpperCase()} MISSION
               </span>
               <span className="badge badge-amber" style={{ display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 850 }}>
-                <Zap size={13} /> +{selectedQuest.points} LabX Points
+                <Zap size={13} /> +{selectedQuest.points} LabX Coins
               </span>
               <StatusBadge status={selectedQuest.user_status} />
             </div>
@@ -295,7 +295,7 @@ export const MilestoneQuestPage = () => {
             {/* Submission Form */}
             {['approved', 'completed'].includes(selectedQuest.user_status) ? (
               <div style={{ padding: '18px', backgroundColor: 'rgba(16,185,129,0.15)', border: '1.5px solid rgba(16,185,129,0.4)', borderRadius: '12px', textAlign: 'center', color: '#10b981', fontWeight: '800' }}>
-                ✅ Mission Conquered & Verified! XP Awarded.
+                ✅ Mission Conquered & Verified! LabX Coins Awarded.
               </div>
             ) : selectedQuest.user_status === 'under_review' ? (
               <div style={{ padding: '18px', backgroundColor: 'rgba(245,158,11,0.15)', border: '1.5px solid rgba(245,158,11,0.4)', borderRadius: '12px', textAlign: 'center', color: '#f59e0b', fontWeight: '800' }}>
@@ -381,7 +381,7 @@ const QuestCard = ({ quest, onClick }) => (
           {quest.quest_type.toUpperCase()}
         </span>
         <span style={{ fontSize: '0.82rem', fontWeight: '850', color: '#f59e0b', display: 'flex', alignItems: 'center', gap: '3px' }}>
-          <Zap size={13} /> +{quest.points} XP
+          <Zap size={13} /> +{quest.points} Coins
         </span>
       </div>
 

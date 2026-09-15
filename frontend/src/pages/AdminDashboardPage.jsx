@@ -48,7 +48,7 @@ export const AdminDashboardPage = () => {
       <Navbar title="Platform Overview & Analytics" />
 
       {/* Primary KPI Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px', marginBottom: '32px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))', gap: '20px', marginBottom: '32px' }}>
         <AdminStatTile
           icon={<Users color="var(--accent-cyan)" size={24} />}
           label="Total Founders"
@@ -89,7 +89,7 @@ export const AdminDashboardPage = () => {
           <Compass size={20} color="var(--accent-cyan)" /> Founder Distribution Across 12 Domains
         </h3>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '16px' }}>
           {(domain_distribution || []).map((d) => (
             <div
               key={d.domain_id}
